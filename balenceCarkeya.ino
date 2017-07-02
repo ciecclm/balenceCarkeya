@@ -116,7 +116,7 @@ void loop()
   {
     JY901.CopeSerialData(Serial1.read()); //Call JY901 data cope function
   }
-  Input = JY901.stcAngle.Angle[1];
+  Input = JY901.stcAngle.Angle[1]/32768*180;
   myPID.Compute();
   sendData(Output); 
   Serial2.print(Kp);
