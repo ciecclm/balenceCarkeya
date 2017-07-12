@@ -153,8 +153,15 @@ void loop()
   Serial2.print(Ki);
   Serial2.print(',');
   Serial2.print(Kd);
-
   Serial2.print("Output:");Serial2.print(Output);
   Serial2.print("INput:");Serial2.println(Input);
+  Serial.print(Kp);
+  Serial.print(',');
+  Serial.print(Ki);
+  Serial.print(',');
+  Serial.print(Kd);
+  Serial.print(',');
+  Serial.print("Output:");Serial.print(Output);
+  Serial.print("INput:");Serial.println(Input);
 }
 
