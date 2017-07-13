@@ -5,7 +5,7 @@
 #include <Wire.h>
 //#include "robomodule_due_CAN.h"
 double Setpoint, Input, Output;
-char s[25]={0,0,0,0,0,0,0,0,0,0,0,0,0,0,00,0,0,0,0,0,0,0,0,0};
+char s[25]="000000000000000000000000";
 double Kp=14, Ki=0, Kd=0.1;
 int i;
 int multp,multi,multd;
@@ -41,7 +41,7 @@ void setup()
 {
   Serial2.begin(115200); 
   Serial.begin(9600); 
-  Serial1.begin(115200);
+  Serial1.begin(9600);
   Can0.begin(CAN_BPS_250K);
   Input = 0;
   Setpoint = 0;
@@ -133,9 +133,9 @@ void loop()
    // s[13]=Serial2.read();
    // while(Serial2.available()==0);
   //  s[14]=Serial2.read();
-    multp=(s[12]-48)*1000+(s[13]-48)*100+(s[14]-48)*10+s[15];
-    multi=(s[16]-48)*1000+(s[17]-48)*100+(s[18]-48)*10+s[19];
-    multd=(s[20]-48)*1000+(s[21]-48)*100+(s[22]-48)*10+s[23];
+    multp=(s[12]-48)*1000+(s[13]-48)*100+(s[14]-48)*10+s[15]-48;
+    multi=(s[16]-48)*1000+(s[17]-48)*100+(s[18]-48)*10+s[19]-48;
+    multd=(s[20]-48)*1000+(s[21]-48)*100+(s[22]-48)*10+s[23]-48;
     Kp=((s[0]-48)+(s[1]-48)/10+(s[2]-48)/100.0+(s[3]-48)/1000.0)*multp;
     Ki=((s[4]-48)+(s[5]-48)/10+(s[6]-48)/100.0+(s[7]-48)/1000.0)*multi;
     Kd=((s[8]-48)+(s[9]-48)/10+(s[10]-48)/100.0+(s[11]-48)/1000.0)*multd;
@@ -148,6 +148,7 @@ void loop()
   Input = JY901.stcAngle.Angle[1]/32768*180;
   myPID.Compute();
   sendData(Output); 
+ 
   Serial2.print(Kp);
   Serial2.print(',');
   Serial2.print(Ki);
