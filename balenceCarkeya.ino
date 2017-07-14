@@ -27,10 +27,11 @@ void sendData(short prm)
   //  outgoing.data.byte[2] = 0xDD;
   //outgoing.data.byte[3] = 0x55;
  // outgoing.data.high = 0xDEADBEEF;
+ outgoing.length=8;
  outgoing.data.bytes[0]=0x23;
  outgoing.data.bytes[1]=0x00;
  outgoing.data.bytes[2]=0x20;
- outgoing.data.bytes[3]=0x01;
+ outgoing.data.bytes[3]=0x02;
  outgoing.data.bytes[4]=prm&0xff;
  outgoing.data.bytes[5]=(prm>>8)&0xff;
  outgoing.data.bytes[6]=0x00;
