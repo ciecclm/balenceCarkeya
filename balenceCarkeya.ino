@@ -85,7 +85,7 @@ void loop()
       while(Serial2.available()==0);
       s[i]=Serial2.read();
     }
-    /*s[0]=Serial2.read();
+    s[0]=Serial2.read();
     while(Serial2.available()==0);
     s[1]=Serial2.read();
     while(Serial2.available()==0);
@@ -125,7 +125,7 @@ void loop()
     while(Serial2.available()==0);
     s[10]=Serial2.read();
     while(Serial2.available()==0);
-    s[10]=Serial2.read();*/
+    s[10]=Serial2.read();
   //  while(Serial2.available()==0);
   //  s[11]=Serial2.read();
   //  while(Serial2.available()==0);
@@ -166,4 +166,3 @@ void loop()
   Serial.print("Output:");Serial.print(Output);
   Serial.print("INput:");Serial.println(Input);
 }
-
